@@ -1,0 +1,286 @@
+@import "../constants"
+
+.curtain
+  z-index: 7
+
+.container
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  background: #ffffff
+  border-radius: 1rem
+  z-index: 8
+  display: none
+  overflow: hidden
+
+  &.show
+    animation: bounceInPopup .4s ease
+    display: block
+
+  &.fade_out
+    animation: bounceOutPopup .4s ease
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+    display: flex
+
+  .container_wrapper
+    width: 900px
+    max-width: 900px
+    min-height: 400px
+    height: max-content
+    max-height: 90vh
+    position: relative
+    background-color: #fff
+    padding: 2rem 4rem 2rem 3rem
+    overflow: auto
+    overflow-x: hidden
+
+    &::-webkit-scrollbar
+      display: none
+
+  .close
+    position: fixed
+    top: 1rem
+    right: 1rem
+
+    .close_inner
+      width: 2.5rem
+      height: 2.5rem
+      cursor: pointer
+      padding: .5rem
+      border: 2px solid #1f1f1f
+      background-color: #ffffff
+      border-radius: 12px
+      position: relative
+      transition: .15s ease-out
+      transition-property: background-color, border-color
+
+      &:hover
+        background-color: $dangerColorSoft
+        border-color: $dangerColorSoft
+
+        div
+          background-color: #ffffff
+
+      div
+        display: block
+        width: 1.5rem
+        height: 2px
+        border-radius: 2px
+        background-color: #1f1f1f
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%) rotate(45deg)
+        transform-origin: center center
+        transition: background-color .15s ease-out
+
+        &:last-child
+          transform: translate(-50%, -50%) rotate(-45deg)
+
+  .title,
+  .subtitle
+    margin-bottom: 1rem
+    font-size: 2rem
+    font-weight: 700
+    font-family: $primaryFont
+    color: $primaryColor
+    cursor: default
+    display: inline-block
+    width: 100%
+
+  .description
+    font-size: 1rem
+    font-family: $textFont
+    font-weight: 500
+    margin-top: -.5rem
+    margin-bottom: 1rem
+    color: #383838
+
+  .subtitle
+    font-size: 1.5rem
+    font-weight: 600
+    margin-top: 1rem
+    margin-bottom: .5rem
+
+  .tasks
+    width: 100%
+    max-height: 300px
+    overflow-x: hidden
+    border-top: 1px solid #eaeaea
+    padding-top: .5rem
+
+    .task
+      width: 100%
+      padding: 1rem
+      border-radius: .5rem
+      cursor: default
+      display: flex
+      align-items: center
+      margin-bottom: .5rem
+      transition: background-color .15s ease-out
+
+      &.active,
+      &:hover:not(&.completed)
+        background-color: transparentize($primaryColor, .9)
+
+        .icon .circle_icon
+          border-color: $primaryColor
+
+        .task_title
+          color: $primaryColor
+
+      .icon
+        width: 1.5rem
+        height: 1.5rem
+        margin-right: 1rem
+        display: flex
+        justify-content: center
+        align-items: center
+
+        .circle_icon
+          width: 1.5rem
+          height: 1.5rem
+          border-radius: 100%
+          border: 2px solid #1f1f1f
+          cursor: pointer
+          transition: .15s ease-out
+          transition-property: background-color, border-color
+
+        svg
+          width: 100%
+          height: 100%
+
+      > div
+        max-width: 100%
+
+        .task_title
+          max-width: 100%
+          font-size: 1rem
+          font-weight: 600
+          font-family: $secondaryFont
+          color: #1f1f1f
+          transition: color .15s ease-out
+          word-break: break-all
+          line-height: 1
+
+        .task_description
+          font-size: .9rem
+          font-weight: 500
+          font-family: $textFont
+          color: #1f1f1f
+          opacity: .8
+          word-break: break-all
+          line-height: 1
+          margin-top: 4px
+
+      .actions
+        display: flex
+        margin-left: auto
+        width: max-content
+
+        .action
+          width: 2.5rem
+          height: 2.5rem
+          border-radius: .5rem
+          padding: .5rem
+          cursor: pointer
+          transition: background-color .15s ease-out
+
+          &:hover
+            background-color: transparentize($primaryColor, .9)
+
+            svg path
+              stroke: $primaryColor !important
+
+          svg path
+            stroke: #383838 !important
+            transition: stroke .15s ease-out
+
+      &.completed
+        background-color: transparentize($completedColor, .9)
+
+        .task_title
+          color: $completedColor
+
+        .icon .circle_icon
+          border-color: $completedColor
+          background-color: $completedColor
+
+        .actions
+          .action
+            &:hover
+              background-color: transparentize($completedColor, .9)
+
+              svg path
+              stroke: $completedColor !important
+
+            svg path
+              stroke: $completedColor !important
+
+  .operations
+    display: flex
+    position: relative
+    width: 100%
+    border-top: 1px solid #eaeaea
+    padding-top: 1rem
+
+    .operation
+      display: flex
+      align-items: center
+      height: 3rem
+      border-radius: .5rem
+      padding: .7rem
+      margin-right: .5rem
+      cursor: pointer
+      line-height: 1
+      font-family: $secondaryFont
+      font-weight: 600
+      color: #383838
+      transition: .15s ease-out
+      transition-property: color, background-color
+
+      &:hover
+        background-color: transparentize($primaryColor, .9)
+        color: $primaryColor
+
+        svg path
+          stroke: $primaryColor !important
+
+        &.star
+          background-color: transparentize($starColor, .9)
+          color: $starColor
+
+          &.active svg path
+            stroke: none !important
+            fill: $starColor !important
+
+          svg path
+            stroke: $starColor !important
+
+        &.archive
+          background-color: transparentize($archiveColor, .9)
+          color: $archiveColor
+
+          &.active svg path
+            stroke: none !important
+            fill: $archiveColor !important
+
+          svg path
+            stroke: $archiveColor !important
+
+        svg
+          opacity: 1
+
+      svg
+        margin-right: .5rem
+
+        path
+          transition: .15s ease-out
+          transition-property: fill, stroke
+          stroke: #383838 !important
+
+      &.active svg path
+        stroke: none !important
+        fill: #383838 !important

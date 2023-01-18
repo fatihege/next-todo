@@ -1,0 +1,224 @@
+@import "../constants"
+
+@keyframes fadeInLeft
+  0%
+    transform: translateX(-100px)
+    opacity: 0
+
+  40%
+    opacity: 0
+
+  100%
+    transform: translateX(0)
+    opacity: 1
+
+@keyframes fadeInTop
+  0%
+    transform: translateY(-100px)
+    opacity: 0
+
+  40%
+    opacity: 0
+
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+.side_panel
+  width: 340px
+  height: 100vh
+  position: fixed
+  top: 0
+  left: 0
+  background-color: #ffffff
+  display: flex
+  flex-direction: column
+
+  .top
+    margin-top: 1rem
+    width: 100%
+    padding: 1rem 1.5rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    background-color: $primaryColor
+    border-top-right-radius: 1.5rem
+    border-bottom-right-radius: 1.5rem
+    animation: fadeInLeft .5s ease-out
+
+    .user
+      display: flex
+      justify-content: space-between
+      align-items: center
+      animation: fadeInLeft .5s ease-out
+
+      .profile_picture
+        width: 64px
+        height: 64px
+        border-radius: 100%
+        overflow: hidden
+        margin-right: 1rem
+        border: 2px solid #ffffff
+        cursor: pointer
+
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+
+      .user_name
+        font-family: $secondaryFont
+        font-weight: 700
+        font-size: 1.5rem
+        max-width: calc(340px - 3rem - 64px - 1rem - 2rem)
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        color: #ffffff
+        position: relative
+        cursor: pointer
+
+    .settings
+      width: 1.7rem
+      height: 1.7rem
+      cursor: pointer
+      position: relative
+      animation: fadeInLeft .3s ease-out
+      display: flex
+      justify-content: center
+      align-items: center
+
+      &:hover svg
+        transform: rotate(-90deg)
+
+      svg
+        transform: rotate(0)
+        transition: transform .3s cubic-bezier(1, 0, .65, .65)
+
+  .lists
+    padding: 1.5rem
+    animation: fadeInTop .5s ease-out
+    height: calc(100vh - 96px - 72px - 12px)
+    overflow-y: auto
+
+    ul
+      list-style-type: none
+      font-family: $textFont
+
+      .separator
+        width: 100%
+        height: 2px
+        border-radius: 2px
+        background-color: #dedede
+        margin-bottom: .5rem
+
+      li
+        margin-bottom: .5rem
+        display: flex
+        align-items: center
+        font-weight: 600
+        font-size: 1rem
+        cursor: pointer
+        transition: background-color .15s ease-out
+        padding: .7rem 1rem
+        border-radius: .5rem
+
+        &:hover
+          background-color: transparentize($primaryColor, 0.9)
+
+          .icon svg path
+            stroke: $primaryColor !important
+
+          .icon_circle
+            border-color: $primaryColor
+
+          .name
+            color: $primaryColor
+
+        .icon
+          margin-right: 1rem
+          display: flex
+          justify-content: center
+          align-items: center
+
+          svg
+            width: 1.5rem !important
+            height: 1.5rem !important
+
+            path
+              stroke: #1f1f1f !important
+              transition: stroke .15s ease-out
+
+        .icon_circle
+          width: 1.5rem
+          height: 1.5rem
+          margin-right: 1rem
+
+          .circle
+            width: 1.5rem
+            height: 1.5rem
+            border-radius: 100%
+            border: 2px solid #1f1f1f
+            transition: .15s ease-out
+            transition-property: background-color, border-color
+
+        .name
+          display: flex
+          align-items: center
+          color: #1f1f1f
+          transition: color .15s ease-out
+
+        &.completed
+          &:hover
+            background-color: transparentize($completedColor, .9)
+
+          .name
+            color: $completedColor
+
+          .icon_circle .circle
+            background-color: $completedColor
+            border-color: $completedColor
+
+  .logout_container
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    padding: 1rem
+    background-color: #fff
+
+    .logout
+      display: flex
+      align-items: center
+      justify-self: flex-end
+      width: max-content
+      cursor: pointer
+      transition: background-color .12s ease-out
+      padding: .5rem
+      border-radius: .5rem
+      animation: fadeInLeft .5s ease-out
+
+      &:hover
+        background-color: transparentize($errorColor, 0.9)
+
+        svg path
+          stroke: #ff4f4f !important
+
+        span
+          color: #ff4f4f
+
+      svg
+        width: 1.5rem !important
+        height: 1.5rem !important
+        margin-right: .5rem
+
+        path
+          stroke: #727272 !important
+          transition: stroke .15s ease-out
+
+      span
+        font-family: $textFont
+        font-size: 1rem
+        font-weight: 500
+        color: #727272
+        transition: color .15s ease-out

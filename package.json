@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.1",
+    "@svgr/cli": "^6.5.1",
+    "axios": "^1.2.2",
+    "date-format": "^4.0.14",
+    "dotenv": "^16.0.3",
+    "javascript-time-ago": "^2.5.9",
+    "next": "13.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}

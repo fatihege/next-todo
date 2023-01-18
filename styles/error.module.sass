@@ -1,0 +1,156 @@
+@import "constants"
+
+@keyframes fadeIn
+  0%,
+  30%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+@keyframes cogRotate
+  from
+    transform: rotate(0)
+
+  to
+    transform: rotate(3600deg)
+
+@keyframes bounceInBottom
+  0%
+    transform: translate(500px, 500px)
+    opacity: 0
+
+  17%
+    transform: translate(-140px, -140px)
+    opacity: 0
+
+  20%
+    transform: translate(-150px, -150px)
+
+  37%
+    transform: translate(90px, 90px)
+
+  40%
+    transform: translate(100px, 100px)
+
+  57%
+    transform: translate(-40px, -40px)
+
+  60%
+    transform: translate(-50px, -50px)
+
+  80%
+    transform: translate(20px, 20px)
+
+  100%
+    transform: translate(0, 0)
+
+@keyframes bounceInTop
+  0%
+    transform: translate(-500px, -500px)
+    opacity: 0
+
+  17%
+    transform: translate(140px, 140px)
+    opacity: 0
+
+  20%
+    transform: translate(150px, 150px)
+
+  37%
+    transform: translate(-90px, -90px)
+
+  40%
+    transform: translate(-100px, -100px)
+
+  57%
+    transform: translate(40px, 40px)
+
+  60%
+    transform: translate(50px, 50px)
+
+  80%
+    transform: translate(-20px, -20px)
+
+  100%
+    transform: translate(0, 0)
+
+.error_container
+  width: 100%
+  min-height: 100vh
+  background-color: $primaryColor
+  display: flex
+  justify-content: center
+  align-items: center
+
+  .centre
+    font-family: $primaryFont
+    color: #ffffff
+    animation: fadeIn .5s ease-out
+
+    .reaction
+      font-size: 8rem
+
+    .code
+      font-size: 5rem
+
+    .return_home
+      display: inline-block
+      padding: .5rem 1rem
+      font-size: 1rem
+      font-weight: 600
+      border-radius: 8px
+      background-color: #fff
+      color: $primaryColor
+
+  .cogs_bottom,
+  .cogs_top
+    position: absolute
+
+    &.bounce_in
+      .cog_pic,
+      .stroke_pic
+        animation: bounceInBottom .7s ease-out
+
+      .stroke_pic
+        transform: translate(100%, 100%)
+        animation-delay: .13s
+
+    .cog_pic,
+    .stroke_pic
+      position: fixed
+      animation: cogRotate 100s ease infinite
+
+    .cog_pic
+      right: -100px
+      bottom: -100px
+      width: 500px
+      height: 500px
+
+    .stroke_pic
+      right: -175px
+      bottom: -175px
+      width: 650px
+      height: 650px
+
+  .cogs_top
+    &.bounce_in
+      .cog_pic,
+      .stroke_pic
+        animation-name: bounceInTop
+
+      .stroke_pic
+        transform: translate(-100%, -100%)
+
+    .cog_pic,
+    .stroke_pic
+      animation-delay: .2s
+      animation-duration: 130s
+
+    .cog_pic
+      left: -100px
+      top: -100px
+
+    .stroke_pic
+      left: -175px
+      top: -175px

@@ -1,0 +1,49 @@
+$maxWidth: 1200px
+$primaryColor: #5a07ff
+$primaryColorDark: #330198
+$errorColor: #ff2c2c
+$successColor: #19d90a
+$dangerColorSoft: #ff4d4d
+$starColor: #ffbf00
+$archiveColor: #ff3747
+$completedColor: #00d757
+$uncompletedColor: #ff3838
+$secondaryFont: 'Plus Jakarta Sans', sans-serif
+$primaryFont: 'Epilogue', sans-serif
+$textFont: 'Inter', sans-serif
+$primaryFontSize: 16px
+
+@keyframes bounceInPopup
+  0%
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+
+  60%
+    transform: translate(-50%, -50%) scale(1.05)
+    opacity: 1
+
+  80%
+    transform: translate(-50%, -50%) scale(0.95)
+
+  100%
+    transform: translate(-50%, -50%) scale(1)
+    opacity: 1
+
+@keyframes bounceOutPopup
+  0%
+    transform: translate(-50%, -50%) scale(1)
+    opacity: 1
+
+  40%
+    transform: translate(-50%, -50%) scale(0.95)
+    opacity: 1
+
+  60%
+    transform: translate(-50%, -50%) scale(1.05)
+
+  70%
+    opacity: 0
+
+  100%
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0

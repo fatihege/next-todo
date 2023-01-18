@@ -1,0 +1,179 @@
+@import "constants"
+
+.point
+  cursor: pointer !important
+
+.curtain
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background-color: transparentize(#000, 0.5)
+  z-index: 5
+  visibility: hidden
+  opacity: 0
+  transition-duration: .2s
+  transition-property: visibility, opacity
+
+  &.show
+    opacity: 1
+    visibility: visible
+
+.primary_input,
+.default_input,
+.default_textarea
+  padding: .5rem 1rem
+  border-radius: .5rem
+  border: 2px solid #fff
+  font-family: $textFont
+  color: #ffffff
+  font-weight: 600
+  font-size: 1rem
+  background-color: transparent
+  margin-bottom: .5rem
+  transition: border-color .15s ease-out
+  resize: none
+
+  &::placeholder
+    color: rgba(255, 255, 255, 0.8)
+    transition: color .1s ease-out
+    font-weight: 400
+
+  &:focus::placeholder
+    color: #ffffff
+
+.default_input,
+.default_textarea
+  border: 2px solid #1f1f1f
+  color: #1f1f1f
+  caret-color: $primaryColor
+  width: 100%
+
+  &::placeholder
+    color: #383838
+    font-weight: 500
+
+  &:focus::placeholder
+    color: #383838
+
+  &:focus
+    border-color: $primaryColor
+
+.primary_input[type="password"]
+  font-weight: 900
+
+.default_file
+  font-family: $primaryFont
+  font-weight: 500
+  margin-bottom: 1rem
+
+  &::file-selector-button
+    margin-bottom: .5rem
+
+.primary_button,
+.default_button,
+.danger_button,
+.default_file::file-selector-button
+  display: block
+  padding: .5rem 1rem
+  border-radius: .5rem
+  border: 2px solid #ffffff
+  background-color: #ffffff
+  color: $primaryColor
+  font-family: $textFont
+  font-size: 1rem
+  font-weight: 600
+  cursor: pointer
+  transition: .1s ease-out
+  transition-property: background-color, color, opacity
+  width: 100%
+
+  &:hover
+    background-color: transparent
+    color: #ffffff
+
+  &:focus
+    opacity: .8
+
+  &:disabled
+    opacity: .5
+    pointer-events: none
+
+.default_button,
+.danger_button,
+.default_file::file-selector-button
+  border: 2px solid $primaryColor
+  background-color: $primaryColor
+  color: #ffffff
+  white-space: nowrap
+
+  &:hover
+    background-color: #ffffff
+    color: $primaryColor
+
+.danger_button
+  background-color: #ffffff
+  color: $dangerColorSoft
+  border-color: $dangerColorSoft
+
+  &:hover
+    color: #ffffff
+    background-color: $dangerColorSoft
+    border-color: $dangerColorSoft
+
+.primary_checkbox
+  display: flex
+  align-items: center
+  height: 1.6rem
+  width: max-content
+  position: relative
+  padding-left: 2rem
+  margin-bottom: .5rem
+  cursor: pointer
+  font-family: $primaryFont
+  font-weight: 500
+  color: #ffffff
+  font-size: 1rem
+  line-height: 1
+  user-select: none
+
+  input
+    position: absolute
+    opacity: 0
+    height: 0
+    width: 0
+
+    &:checked ~ span
+      background-color: #fff
+
+    &:checked ~ span::after
+      width: 8px
+      height: 4px
+      opacity: 1
+      transform: translate(-50%, calc(-50% - 1px)) rotate(-45deg)
+
+  span
+    position: absolute
+    top: 0
+    left: 0
+    height: 1.5rem
+    width: 1.5rem
+    background-color: transparent
+    border: 2px solid #ffffff
+    border-radius: .5rem
+    transition: background-color .1s ease-out
+
+    &::after
+      content: ""
+      width: 0
+      height: 2px
+      opacity: 0
+      border-bottom: 2px solid $primaryColorDark
+      border-left: 2px solid $primaryColorDark
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, calc(-50% + 1px)) rotate(-45deg)
+      transition: .1s ease-out
+      transition-property: width, height, opacity, transform

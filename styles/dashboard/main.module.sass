@@ -1,0 +1,232 @@
+@import "../constants"
+
+@keyframes fadeInTop
+  0%
+    transform: translateY(-100px)
+    opacity: 0
+
+  40%
+    opacity: 0
+
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+@keyframes fadeInRight
+  0%
+    transform: translateX(200px)
+    opacity: 0
+
+  40%
+    opacity: 0
+
+  100%
+    transform: translateX(0)
+    opacity: 1
+
+.main
+  width: calc(100% - 340px)
+  min-height: 100vh
+  position: relative
+  left: 340px
+  top: 0
+  padding: 1rem 2rem
+
+  .user
+    position: absolute
+    right: 0
+    top: 100px
+    width: 90%
+    height: 200px
+    background-color: $primaryColor
+    border-top-left-radius: 100px
+    border-bottom-left-radius: 100px
+    display: flex
+    align-items: center
+    padding: 0 2.25rem
+    animation: fadeInRight .5s ease-out
+
+    .image
+      min-width: 128px
+      width: 128px
+      height: 128px
+      border-radius: 100%
+      border: 3px solid #ffffff
+      overflow: hidden
+      margin-right: 2rem
+      animation: fadeInRight .5s ease-out
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+    .user_info
+      animation: fadeInRight .5s ease-out
+
+      .user_name
+        font-family: $primaryFont
+        font-size: 3rem
+        font-weight: 700
+        color: #fff
+
+      .user_email
+        font-family: $secondaryFont
+        font-size: 1.5rem
+        font-weight: 700
+        color: #fff
+        opacity: .9
+
+    .creation
+      margin-left: auto
+      opacity: .9
+      text-align: right
+
+      .joined
+        font-family: $primaryFont
+        font-size: 1rem
+        font-weight: 500
+        color: #ffffff
+
+      .created_at
+        font-family: $textFont
+        font-size: .8rem
+        font-weight: 600
+        color: #ffffff
+
+  .grid
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    position: absolute
+    top: 340px
+    left: 250px
+    animation: fadeInTop .5s ease-out
+    gap: 1rem
+
+  .grid_section
+    &.actions ul
+      width: max-content
+      max-width: 400px
+
+    .title
+      font-size: 2rem
+      font-weight: 800
+      font-family: $primaryFont
+      color: $primaryColor
+      margin-bottom: .5rem
+
+    ul
+      list-style-type: none
+      font-family: $textFont
+      width: 600px
+
+      li
+        margin-bottom: .5rem
+        display: flex
+        justify-content: flex-start
+        align-items: flex-start
+        font-weight: 600
+        font-size: 1rem
+        cursor: pointer
+        transition: background-color .15s ease-out
+        padding: .7rem 1rem
+        border-radius: .5rem
+
+        &.no_description
+          align-items: center
+
+        &:hover
+          background-color: transparentize($primaryColor, 0.9)
+
+          .icon svg path
+            stroke: $primaryColor !important
+
+          .icon_circle .circle
+            border-color: $primaryColor
+
+          .name
+            color: $primaryColor
+
+        .icon
+          width: 1.5rem
+          height: 1.5rem
+          margin-right: 1rem
+          display: flex
+          justify-content: center
+          align-items: center
+
+          svg
+            width: 1.5rem
+            height: 1.5rem
+
+            path
+              stroke: #383838 !important
+              transition: stroke .15s ease-out
+
+        .icon_circle
+          .circle
+            width: 1.5rem
+            height: 1.5rem
+            border-radius: 1.5rem
+            border: 2px solid #1f1f1f
+            margin-right: 1rem
+            transition: .15s ease-out
+            transition-property: background-color, border-color
+
+        .name
+          display: flex
+          align-items: center
+          color: #1f1f1f
+          transition: color .15s ease-out
+
+        .description
+          font-size: .8rem
+          font-weight: 500
+          color: #1f1f1f
+          opacity: .9
+          margin-top: 4px
+
+        &.completed
+          &:hover,
+          .actions .action:hover
+            background-color: transparentize($completedColor, .9)
+
+          .name
+            color: $completedColor
+
+          .icon_circle .circle
+            background-color: $completedColor
+            border-color: $completedColor
+
+          .actions .action:hover svg path
+            stroke: $completedColor !important
+
+      .actions
+        margin-left: auto
+        display: flex
+        justify-self: flex-end
+
+        .action
+          width: 2.5rem
+          height: 2.5rem
+          margin-left: .25rem
+          padding: .5rem
+          display: flex
+          justify-content: center
+          align-items: center
+          border-radius: 8px
+          transition: background-color .15s ease-out
+
+          &:hover
+            background-color: transparentize($primaryColor, 0.9)
+
+            svg path
+              stroke: $primaryColor !important
+
+          &:first-child
+            margin-left: 2rem
+
+          svg path
+            stroke: #383838 !important
+            transition: stroke .15s ease-out

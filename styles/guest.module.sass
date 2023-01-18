@@ -1,0 +1,111 @@
+@import "constants"
+
+@keyframes bounceIn
+  0%
+    transform: translate(-50%, -50%) scale(0)
+    opacity: 0
+
+  40%
+    transform: translate(-50%, -50%) scale(1)
+
+  45%
+    opacity: .2
+
+  50%
+    transform: translate(-50%, -50%) scale(1.1)
+
+  65%
+    transform: translate(-50%, -50%) scale(1)
+
+  75%
+    transform: translate(-50%, -50%) scale(0.9)
+
+  100%
+    transform: translate(-50%, -50%) scale(1)
+    opacity: 1
+
+@keyframes fadeInTop
+  0%
+    transform: translateY(-100px)
+    opacity: 0
+
+  40%
+    opacity: 0
+
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+@keyframes fadeInBottom
+  0%
+    transform: translateY(100px)
+    opacity: 0
+
+  40%
+    opacity: 0
+
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+.form_container
+  background-color: $primaryColor
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  width: 100%
+
+  &::before
+    content: ""
+    width: 700px
+    height: 700px
+    border-radius: 100%
+    background-color: transparentize($primaryColorDark, .5)
+    position: absolute
+    transform: translate(-50%, -50%)
+    top: 50%
+    left: 50%
+    z-index: 0
+    animation: bounceIn .5s ease-out
+
+  h1
+    font-size: 3.5rem
+    font-family: $primaryFont
+    color: #fff
+    font-weight: 900
+    position: relative
+    top: -1rem
+    z-index: 1
+    animation: fadeInBottom .5s ease-out
+
+  h3
+    font-size: 1.5rem
+    font-family: $secondaryFont
+    color: #fff
+    font-weight: 500
+    margin: 1rem 0
+    z-index: 1
+    animation: fadeInTop .5s ease-out
+
+  form
+    width: 400px
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    z-index: 1
+    animation: fadeInTop .5s ease-out
+
+  .swap
+    color: #ffffff
+    margin-top: 1rem
+    font-weight: 500
+    font-size: 12px
+    font-family: $textFont
+    z-index: 1
+    animation: fadeInBottom .5s ease-out
+
+    a
+      color: #ffffff
+      font-weight: 700
